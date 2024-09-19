@@ -1,194 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RampoTech - Dream it Innovate it</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            color: #333;
-            scroll-behavior: smooth;
-        }
-
-        header {
-            background-image: url('hero-image.jpg'); /* Replace with your hero image */
-            height: 100vh;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
-
-        .overlay {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-        }
-
-        .slogan {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            background-color: #ff6f61;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #e55a4d;
-        }
-
-        section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .about {
-            background: #fff;
-        }
-
-        .features {
-            background: #f4f4f4;
-            padding: 60px 20px;
-        }
-
-        .feature-card {
-            display: inline-block;
-            width: 250px;
-            margin: 20px;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: scale(1.05);
-        }
-
-        .services {
-            background: #fff;
-        }
-
-        .service-card {
-            margin: 20px;
-            display: inline-block;
-            width: 300px;
-            transition: transform 0.3s;
-        }
-
-        .service-card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .service-card:hover {
-            transform: scale(1.05);
-        }
-
-        .testimonials {
-            background: #f4f4f4;
-            padding: 60px 20px;
-        }
-
-        .testimonial {
-            font-style: italic;
-            margin: 20px;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            padding: 20px;
-        }
-
-        /* Add some responsive design */
-        @media (max-width: 768px) {
-            .service-card, .feature-card {
-                width: 90%;
-            }
-        }
+        body, h1, h2, h3, h4, h5 {font-family: "Raleway", sans-serif;}
     </style>
 </head>
-<body>
+<body class="w3-light-grey">
 
-    <header>
-        <div class="overlay">
-            <h1>RampoTech</h1>
-            <p class="slogan">Dream it Innovate it</p>
-            <h2>Innovative Solutions in AI and Robotics</h2>
-            <a href="#services" class="cta-button">Explore Our Solutions</a>
-        </div>
-    </header>
+<div class="w3-content" style="max-width:1400px">
 
-    <section id="about" class="about">
-        <h2>About Us</h2>
-        <p>At RampoTech, we are pioneering the future of AI and robotics. Our mission is to innovate and deliver cutting-edge solutions that empower industries and enhance lives.</p>
-    </section>
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+    <h1><b>RampoTech</b></h1>
+    <p>Innovating the future of <span class="w3-tag">AI</span> and <span class="w3-tag">Robotics</span></p>
+</header>
 
-    <section id="features" class="features">
-        <h2>Our Features</h2>
-        <div class="feature-card">
-            <h3>Advanced AI Algorithms</h3>
-            <p>Utilizing state-of-the-art algorithms to solve complex problems.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Robust Robotics</h3>
-            <p>Creating durable and efficient robots for various applications.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Real-time Data Processing</h3>
-            <p>Enabling instant decision-making through real-time analysis.</p>
-        </div>
-    </section>
+<!-- Grid -->
+<div class="w3-row">
 
-    <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="service-card">
-            <img src="ai-research.jpg" alt="AI Research"> <!-- Replace with your image -->
-            <h3>AI Research</h3>
-            <p>Transforming data into actionable insights.</p>
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+    <!-- Blog entry -->
+    <div class="w3-card-4 w3-margin w3-white">
+        <img src="https://www.w3schools.com/w3images/woods.jpg" alt="AI Research" style="width:100%">
+        <div class="w3-container">
+            <h3><b>Transforming Ideas into Reality</b></h3>
+            <h5>AI Solutions, <span class="w3-opacity">April 7, 2024</span></h5>
         </div>
-        <div class="service-card">
-            <img src="robotics.jpg" alt="Robotics Solutions"> <!-- Replace with your image -->
-            <h3>Robotics Solutions</h3>
-            <p>Designing intelligent machines for a better tomorrow.</p>
-        </div>
-        <div class="service-card">
-            <img src="consulting.jpg" alt="Consulting Services"> <!-- Replace with your image -->
-            <h3>Consulting Services</h3>
-            <p>Expert guidance for your technological needs.</p>
-        </div>
-    </section>
 
-    <section id="testimonials" class="testimonials">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonial">
-            <p>"RampoTech has transformed our operations with their innovative AI solutions!"</p>
-            <cite>- Sarah Johnson, CEO of TechCorp</cite>
+        <div class="w3-container">
+            <p>At RampoTech, we harness the power of artificial intelligence to develop groundbreaking solutions tailored to meet the needs of various industries.</p>
+            <div class="w3-row">
+                <div class="w3-col m8 s12">
+                    <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+                </div>
+                <div class="w3-col m4 w3-hide-small">
+                    <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+                </div>
+            </div>
         </div>
-        <div class="testimonial">
-            <p>"The robotics solutions we received have significantly improved our efficiency."</p>
-            <cite>- Mark Smith, Operations Manager at Industrial Co.</cite>
-        </div>
-    </section>
+    </div>
+    <hr>
 
-    <footer class="footer">
-        <p>&copy; 2024 RampoTech. All Rights Reserved.</p>
-    </footer>
+    <!-- Blog entry -->
+    <div class="w3-card-4 w3-margin w3-white">
+        <img src="https://www.w3schools.com/w3images/bridge.jpg" alt="Robotics Solutions" style="width:100%">
+        <div class="w3-container">
+            <h3><b>Innovative Robotics</b></h3>
+            <h5>Robotics Engineering, <span class="w3-opacity">April 2, 2024</span></h5>
+        </div>
+
+        <div class="w3-container">
+            <p>Our robotics solutions integrate seamlessly into your operations, enhancing efficiency and productivity.</p>
+            <div class="w3-row">
+                <div class="w3-col m8 s12">
+                    <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+                </div>
+                <div class="w3-col m4 w3-hide-small">
+                    <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+    <!-- About Card -->
+    <div class="w3-card w3-margin w3-margin-top">
+        <img src="https://www.w3schools.com/w3images/avatar_g.jpg" style="width:100%">
+        <div class="w3-container w3-white">
+            <h4><b>About RampoTech</b></h4>
+            <p>We are dedicated to pushing the boundaries of technology, offering innovative solutions that drive progress and efficiency across sectors.</p>
+        </div>
+    </div><hr>
+    
+    <!-- Popular Posts -->
+    <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding">
+            <h4>Popular Posts</h4>
+        </div>
+        <ul class="w3-ul w3-hoverable w3-white">
+            <li class="w3-padding-16">
+                <img src="https://www.w3schools.com/w3images/workshop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                <span class="w3-large">AI Innovations</span><br>
+                <span>Explore our latest AI projects.</span>
+            </li>
+            <li class="w3-padding-16">
+                <img src="https://www.w3schools.com/w3images/gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                <span class="w3-large">Robotics Breakthroughs</span><br>
+                <span>Discover our advancements in robotics.</span>
+            </li> 
+            <li class="w3-padding-16">
+                <img src="https://www.w3schools.com/w3images/skies.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                <span class="w3-large">Research Insights</span><br>
+                <span>Latest findings in AI and robotics.</span>
+            </li>   
+        </ul>
+    </div>
+    <hr> 
+
+    <!-- Tags -->
+    <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding">
+            <h4>Tags</h4>
+        </div>
+        <div class="w3-container w3-white">
+            <p>
+                <span class="w3-tag w3-black w3-margin-bottom">AI</span> 
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Robotics</span> 
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Innovation</span>
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Research</span> 
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Technology</span>
+            </p>
+        </div>
+    </div>
+  
+<!-- END Introduction Menu -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+    <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
+    <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button>
+    <a class="w3-button w3-round-xxlarge w3-small w3-light-grey w3-margin-bottom" href="https://www.rampotech.com" target="_blank">Visit Us</a>
+</footer>
 
 </body>
 </html>
