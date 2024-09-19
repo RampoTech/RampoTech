@@ -3,78 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Blog</title>
+    <title>RampoTech - Dream it Innovate it</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             color: #333;
+            scroll-behavior: smooth;
         }
+
         header {
-            background: #35424a;
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-            background: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .post {
-            margin: 20px 0;
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        .post h2 {
-            margin: 0 0 10px;
-        }
-        .post p {
-            line-height: 1.6;
-        }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background: #35424a;
-            color: #ffffff;
+            background-image: url('hero-image.jpg'); /* Replace with your hero image */
+            height: 100vh;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
-            bottom: 0;
+            color: white;
+            text-align: center;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e55a4d;
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .about {
+            background: #fff;
+        }
+
+        .features {
+            background: #f4f4f4;
+            padding: 60px 20px;
+        }
+
+        .feature-card {
+            display: inline-block;
+            width: 250px;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+
+        .services {
+            background: #fff;
+        }
+
+        .service-card {
+            margin: 20px;
+            display: inline-block;
+            width: 300px;
+            transition: transform 0.3s;
+        }
+
+        .service-card img {
             width: 100%;
+            border-radius: 10px;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .testimonials {
+            background: #f4f4f4;
+            padding: 60px 20px;
+        }
+
+        .testimonial {
+            font-style: italic;
+            margin: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        /* Add some responsive design */
+        @media (max-width: 768px) {
+            .service-card, .feature-card {
+                width: 90%;
+            }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Welcome to My Blog</h1>
-    <p>Sharing my thoughts and experiences</p>
-</header>
+    <header>
+        <div class="overlay">
+            <h1>RampoTech</h1>
+            <p class="slogan">Dream it Innovate it</p>
+            <h2>Innovative Solutions in AI and Robotics</h2>
+            <a href="#services" class="cta-button">Explore Our Solutions</a>
+        </div>
+    </header>
 
-<div class="container">
-    <div class="post">
-        <h2>Blog Post Title 1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Cras id libero ac elit sodales aliquet.</p>
-    </div>
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>At RampoTech, we are pioneering the future of AI and robotics. Our mission is to innovate and deliver cutting-edge solutions that empower industries and enhance lives.</p>
+    </section>
 
-    <div class="post">
-        <h2>Blog Post Title 2</h2>
-        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
+    <section id="features" class="features">
+        <h2>Our Features</h2>
+        <div class="feature-card">
+            <h3>Advanced AI Algorithms</h3>
+            <p>Utilizing state-of-the-art algorithms to solve complex problems.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Robust Robotics</h3>
+            <p>Creating durable and efficient robots for various applications.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Real-time Data Processing</h3>
+            <p>Enabling instant decision-making through real-time analysis.</p>
+        </div>
+    </section>
 
-    <div class="post">
-        <h2>Blog Post Title 3</h2>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-    </div>
-</div>
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-card">
+            <img src="ai-research.jpg" alt="AI Research"> <!-- Replace with your image -->
+            <h3>AI Research</h3>
+            <p>Transforming data into actionable insights.</p>
+        </div>
+        <div class="service-card">
+            <img src="robotics.jpg" alt="Robotics Solutions"> <!-- Replace with your image -->
+            <h3>Robotics Solutions</h3>
+            <p>Designing intelligent machines for a better tomorrow.</p>
+        </div>
+        <div class="service-card">
+            <img src="consulting.jpg" alt="Consulting Services"> <!-- Replace with your image -->
+            <h3>Consulting Services</h3>
+            <p>Expert guidance for your technological needs.</p>
+        </div>
+    </section>
 
-<footer>
-    <p>&copy; 2024 My Blog. All Rights Reserved.</p>
-</footer>
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial">
+            <p>"RampoTech has transformed our operations with their innovative AI solutions!"</p>
+            <cite>- Sarah Johnson, CEO of TechCorp</cite>
+        </div>
+        <div class="testimonial">
+            <p>"The robotics solutions we received have significantly improved our efficiency."</p>
+            <cite>- Mark Smith, Operations Manager at Industrial Co.</cite>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 RampoTech. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
