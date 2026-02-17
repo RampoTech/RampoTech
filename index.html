@@ -1,101 +1,530 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Yoga Bharath - Founder and CEO of RampoTech</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-body {font-family: "Times New Roman", Georgia, Serif;}
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display";
-  letter-spacing: 5px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Bharath | Agentic AI Developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
+
+        :root {
+            --primary: #00f3ff;
+            --secondary: #bc13fe;
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg);
+            color: #ffffff;
+            overflow-x: hidden;
+            overscroll-behavior: none;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            outline: none;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Layout */
+        main {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 10%;
+            position: relative;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 5rem;
+            line-height: 1;
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #ccc;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        #hero {
+            align-items: flex-start;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        /* Cards & Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.15);
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card .tech-stack {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Skills Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--secondary);
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--secondary);
+            box-shadow: 0 0 15px var(--secondary);
+            cursor: default;
+        }
+
+        /* Contact */
+        .contact-info {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary);
+            font-family: 'Orbitron';
+            font-size: 2rem;
+            transition: opacity 1s ease;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 4rem 5%; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-    <a href="#home" class="w3-bar-item w3-button">Yoga Bharath - RampoTech</a>
-    <!-- Right-sided navbar links. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="#about" class="w3-bar-item w3-button">About</a>
-      <a href="#services" class="w3-bar-item w3-button">Services</a>
-      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-    </div>
-  </div>
-</div>
+    <!-- Loading Screen -->
+    <div id="loader">INITIALIZING NEURAL LINK...</div>
 
-<!-- Header -->
+    <!-- 3D Background -->
+    <div id="canvas-container"></div>
 
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <span class="role-badge">AGENTIC AI ENGINEER</span>
+            <h1>YOGA BHARATH</h1>
+            <p>Specializing in Robotics, SLAM, and Intelligent Autonomous Systems. <br>
+            Building scalable multi-tenant platforms & AI-powered automation solutions.</p>
+            <div style="margin-top: 2rem;">
+                <a href="#projects" style="color: #fff; text-decoration: none; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">Explore Projects ↓</a>
+            </div>
+        </section>
 
-<!-- Page content -->
-<div class="w3-content" style="max-width:1100px">
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience Timeline</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Agentic AI Workflow Architect</h3>
+                    <div class="tech-stack">Sutherland | 2025 - 2026</div>
+                    <p>Designing autonomous workflows and integrating AI solutions to automate complex enterprise processes.</p>
+                </div>
+                <div class="card">
+                    <h3>Gen-AI & Django Developer</h3>
+                    <div class="tech-stack">Xmedia Solution | 2022 - 2024</div>
+                    <p>Full-stack development with focus on GenAI integration, SDLC automation, and secure system design.</p>
+                </div>
+                <div class="card">
+                    <h3>Research & Development</h3>
+                    <div class="tech-stack">Xmedia Solution | 2021 - 2024</div>
+                    <p>Research-driven development in robotics, IoT, and autonomous surveillance systems.</p>
+                </div>
+            </div>
+        </section>
 
-  <!-- About Section -->
-  <div class="w3-row w3-padding-64" id="about">
-    <div class="w3-col m6 w3-padding-large w3-hide-small">
-     <img src="./assets/images/Yoga.jpeg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
-    </div>
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Key Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Unitree GO2 Surveillance</h3>
+                    <div class="tech-stack">ROS2 Humble | SLAM | GenAI</div>
+                    <p>Autonomous surveillance dog integrated with GenAI for industrial use. Features SLAM technology and real-time decision making.</p>
+                </div>
+                <div class="card">
+                    <h3>Virtual Project Manager</h3>
+                    <div class="tech-stack">Laravel | GenAI</div>
+                    <p>AI-powered assistant that automates project management tasks, resource allocation, and reporting.</p>
+                </div>
+                <div class="card">
+                    <h3>Flight Forecasting</h3>
+                    <div class="tech-stack">Deep Learning | Python</div>
+                    <p>Predicts flight accidents, weather systems, and landing field probabilities using advanced neural networks.</p>
+                </div>
+                <div class="card">
+                    <h3>I-ROCK Platform</h3>
+                    <div class="tech-stack">Django | Multi-Tenant</div>
+                    <p>Cost calculation, invoice generation, and GST/CGST compliance system for material supply chains.</p>
+                </div>
+                <div class="card">
+                    <h3>Netgapidox RAG</h3>
+                    <div class="tech-stack">RAG | Vector DB</div>
+                    <p>Knowledge-base application powered by Retrieval-Augmented Generation for informed document summarization.</p>
+                </div>
+                <div class="card">
+                    <h3>ASVRL-Hester IoT</h3>
+                    <div class="tech-stack">IoT | PID Algorithm</div>
+                    <p>AI-based room temperature management with voice control integration in cutting-edge embedded systems.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="w3-col m6 w3-padding-large">
-      <h1 class="w3-center">About Me</h1><br>
-      <h5 class="w3-center">Founder and CEO of RampoTech</h5>
-      <p class="w3-large">Hi, I'm <b>Yoga Bharath</b>, and I founded RampoTech with a vision to lead the tech industry through innovation. From artificial intelligence to robotics, we specialize in creating forward-thinking technological solutions. Our focus has always been on blending cutting-edge technology with practical applications to transform the way businesses operate and innovate.</p>
-      <p class="w3-large w3-text-grey w3-hide-medium">With over a decade of experience in AI integration, robotics, IoT development, and customized proof of concepts (POC), we aim to deliver futuristic yet practical solutions to meet the unique needs of our clients. Our projects are fueled by passion, creativity, and a commitment to excellence.</p>
-    </div>
-  </div>
-  
-  <hr>
-  
-  <!-- Service Section -->
-  <div class="w3-row w3-padding-64" id="services">
-    <div class="w3-col l6 w3-padding-large">
-      <h1 class="w3-center">Our Services</h1><br>
-      <h4>AI Integration</h4>
-      <p class="w3-text-grey">We integrate artificial intelligence into your business systems to automate processes, enhance decision-making, and optimize efficiency.</p><br>
-    
-      <h4>Robotic Development</h4>
-      <p class="w3-text-grey">From industrial robots to service robots, we design and develop robotic systems that cater to your specific business requirements.</p><br>
-    
-      <h4>Customized POC Creation</h4>
-      <p class="w3-text-grey">We work with you to develop Proof of Concepts (POC) that demonstrate the feasibility and potential of new technology solutions tailored to your needs.</p><br>
-    
-      <h4>IoT Development</h4>
-      <p class="w3-text-grey">Harness the power of connected devices with our Internet of Things (IoT) development services, enabling smarter operations and data-driven insights.</p>    
-    </div>
-    
-    <div class="w3-col l6 w3-padding-large">
-      <img src="./assets/images/image-from-rawpixel-id-12501935-png.png" class="w3-round w3-image w3-opacity-min" alt="Services" style="width:100%">
-    </div>
-  </div>
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Arsenal</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>AI & Robotics</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">Agentic Framework</span>
+                        <span class="skill-tag">Langchain</span>
+                        <span class="skill-tag">CrewAI</span>
+                        <span class="skill-tag">ROS2</span>
+                        <span class="skill-tag">SLAM</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Ollama</span>
+                        <span class="skill-tag">LLAMA</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Web & Backend</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Cybersecurity</span>
+                        <span class="skill-tag">OAuth</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <hr>
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Initialize Connection</h2>
+            <p>Ready to build intelligent, secure, and scalable technologies.</p>
+            <div class="contact-info">
+                <a href="mailto:YogaBharath.r@gmail.com">📧 YogaBharath.r@gmail.com</a>
+                <a href="tel:6374065012">📱 +91 6374065012</a>
+                <span>📍 Chennai, India</span>
+            </div>
+            <div style="margin-top: 3rem; font-size: 0.9rem; color: #666;">
+                © 2026 Yoga Bharath . RAMPOTECH.
+            </div>
+        </section>
+    </main>
 
-  <!-- Contact Section -->
-  <div class="w3-container w3-padding-64" id="contact">
-    <h1>Contact</h1><br>
-    <p>At RampoTech, we are always excited to discuss new projects and collaboration opportunities. Whether you're interested in AI, robotics, or IoT solutions, feel free to reach out to us. We are committed to providing personalized service and developing innovative solutions to meet your business goals.</p>
-    <p class="w3-text-blue-grey w3-large"><b>RampoTech, 42nd Innovation St, 43043 New York, NY</b></p>
-    <p>You can also contact us by phone 00553123-2323 or email at info@rampotech.com, or you can send us a message here:</p>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16" type="number" placeholder="How many people" required name="People"></p>
-      <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-      <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
-    </form>
-  </div>
-  
-<!-- End page content -->
-</div>
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<!-- Footer -->
-<footer class="w3-center w3-light-grey w3-padding-32">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
+    <script>
+        // --- 1. SETUP THREE.JS SCENE ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x050505, 0.002);
 
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // --- 2. CREATE OBJECTS ---
+
+        // A. Central AI Core (Torus Knot)
+        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+        const material = new THREE.MeshStandardMaterial({ 
+            color: 0x00f3ff, 
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3,
+            emissive: 0xbc13fe,
+            emissiveIntensity: 0.5
+        });
+        const aiCore = new THREE.Mesh(geometry, material);
+        scene.add(aiCore);
+
+        // B. Particle System (Neural Network)
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 2000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 50; // Spread particles
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.8,
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // C. Lighting
+        const pointLight = new THREE.PointLight(0xffffff, 1);
+        pointLight.position.set(5, 5, 5);
+        scene.add(pointLight);
+        
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
+
+        // --- 3. INTERACTION & ANIMATION ---
+
+        // Mouse Interaction
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - windowHalfX);
+            mouseY = (event.clientY - windowHalfY);
+        });
+
+        // Clock for animation
+        const clock = new THREE.Clock();
+
+        // Animation Loop
+        const tick = () => {
+            const elapsedTime = clock.getElapsedTime();
+
+            // Rotate Core
+            aiCore.rotation.y = elapsedTime * 0.1;
+            aiCore.rotation.x = elapsedTime * 0.05;
+
+            // Rotate Particles
+            particlesMesh.rotation.y = -elapsedTime * 0.05;
+            particlesMesh.rotation.x = mouseY * 0.0001;
+
+            // Smooth Mouse Follow
+            targetX = mouseX * 0.001;
+            targetY = mouseY * 0.001;
+            aiCore.rotation.y += 0.05 * (targetX - aiCore.rotation.y);
+            aiCore.rotation.x += 0.05 * (targetY - aiCore.rotation.x);
+
+            renderer.render(scene, camera);
+            window.requestAnimationFrame(tick);
+        }
+        tick();
+
+        // --- 4. GSAP SCROLL ANIMATIONS ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Remove Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 1000);
+            
+            // Animate Hero Text
+            gsap.to("#hero h1", { opacity: 1, y: 0, duration: 1, delay: 0.5 });
+        });
+
+        // Camera Movement on Scroll
+        // We move the camera Z and rotate the scene based on scroll position
+        gsap.to(camera.position, {
+            z: 1,
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1
+            }
+        });
+
+        gsap.to(aiCore.rotation, {
+            z: 2,
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1
+            }
+        });
+
+        // Animate Cards on Scroll
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+
+        // --- 5. RESPONSIVE RESIZE ---
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+    </script>
 </body>
 </html>
